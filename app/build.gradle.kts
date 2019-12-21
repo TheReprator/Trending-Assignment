@@ -10,6 +10,14 @@ android {
     compileSdkVersion(AndroidSdk.compile)
 
     defaultConfig {
+        applicationId = AppConstant.applicationPackage
+
+        minSdkVersion(AndroidSdk.min)
+        targetSdkVersion(AndroidSdk.target)
+
+        versionCode = AppVersion.versionCode
+        versionName = AppVersion.versionName
+
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
 
         vectorDrawables.useSupportLibrary = true
@@ -18,6 +26,16 @@ android {
         resConfigs(AndroidSdk.locales)
         buildConfigField("String", AppConstant.hostConstant, "\"${AppConstant.host}\"")
     }
+
+    buildTypes {
+        getByName("debug") {
+            isDebuggable = true
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
+        }
+    }
+
+    flavorDimensions("type")
 
     buildFeatures.viewBinding = true
 
