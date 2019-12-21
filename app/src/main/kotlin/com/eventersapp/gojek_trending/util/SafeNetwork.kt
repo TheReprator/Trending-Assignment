@@ -1,7 +1,7 @@
 package com.eventersapp.gojek_trending.util
 
-import com.eventersapp.gojek_trending.domain.useCases.Result
-import com.eventersapp.gojek_trending.domain.useCases.ErrorResult
+import com.eventersapp.gojek_trending.domain.baseUseCase.Result
+import com.eventersapp.gojek_trending.domain.baseUseCase.ErrorResult
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
