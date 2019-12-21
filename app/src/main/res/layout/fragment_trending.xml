@@ -3,13 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/fragTrend_recy"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/fragTrend_swipe"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:itemCount="20"
-        android:visibility="gone"
-        tools:listitem="@layout/row_trending" />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/fragTrend_recy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            tools:itemCount="20"
+            tools:listitem="@layout/row_trending" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <ProgressBar
         android:id="@+id/fragTrend_pb"

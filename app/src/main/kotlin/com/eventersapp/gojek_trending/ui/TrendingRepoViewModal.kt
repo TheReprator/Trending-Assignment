@@ -23,10 +23,6 @@ class TrendingRepoViewModal @Inject constructor(
     val trendingList: LiveData<MutableList<TrendingModal>>
         get() = _trendingList
 
-    private val _error = MutableLiveData<Event<String>>()
-    val error: LiveData<Event<String>>
-        get() = _error
-
     private val _isLoading = MutableLiveData<Event<Boolean>>()
     val isLoading: LiveData<Event<Boolean>>
         get() = _isLoading

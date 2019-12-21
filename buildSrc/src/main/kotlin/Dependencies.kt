@@ -84,64 +84,6 @@ object Libs {
         const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
     }
-    /*object AndroidX {
-        const val appcompat = "androidx.appcompat:appcompat:1.1.0"
-        const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0-beta04"
-        const val cardView = "androidx.cardview:cardview:1.0.0"
-        const val annotation = "androidx.annotation:annotation:1.1.0"
-        const val multidex = "androidx.multidex:multidex:2.0.1"
-        const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta3"
-        const val coreKtx = "androidx.core:core-ktx:1.2.0-alpha04"
-        const val viewPager2 = "androidx.viewpager2:viewpager2:1.0.0-beta04"
-
-        object Fragment {
-            private const val version = "1.1.0-alpha03"
-            const val fragment = "androidx.fragment:fragment:$version"
-            const val fragmentKtx = "androidx.fragment:fragment-ktx:$version"
-        }
-
-        object Lifecycle {
-            private const val version = "2.2.0-rc02"
-            const val extensions = "androidx.lifecycle:lifecycle-extensions:$version"
-            const val compiler = "androidx.lifecycle:lifecycle-compiler:$version"
-            const val runtime = "androidx.lifecycle:lifecycle-runtime:$version"
-            const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
-            const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
-        }
-
-        object SavedState {
-            const val savedState = "androidx.savedstate:savedstate:1.0.0"
-            const val savedState_viewModal =
-                "androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0-rc02"
-
-            const val savedState_bundle = "androidx.savedstate:savedstate-bundle:1.0.0-alpha01"
-        }
-
-        object Navigation {
-            private const val version = "2.2.0-rc02"
-            const val runtime = "androidx.navigation:navigation-runtime:$version"
-            const val runtimeKtx = "androidx.navigation:navigation-runtime-ktx:$version"
-            const val fragment = "androidx.navigation:navigation-fragment:$version"
-            const val fragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
-            const val ui = "androidx.navigation:navigation-ui:$version"
-            const val uiKtx = "androidx.navigation:navigation-ui-ktx:$version"
-            const val navigationPlugin =
-                "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
-        }
-
-        object Room {
-            private const val version = "2.1.0-beta01"
-            const val runtime = "androidx.room:room-runtime:$version"
-            const val compiler = "androidx.room:room-compiler:$version"
-        }
-
-        object Work {
-            private const val version = "1.0.1"
-            const val runtimeKtx = "android.arch.work:work-runtime-ktx:$version"
-            const val runtime = "android.arch.work:work-runtime:$version"
-        }
-    }*/
-
 
     object AndroidX {
         const val appcompat = "androidx.appcompat:appcompat:1.1.0"

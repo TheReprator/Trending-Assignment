@@ -25,18 +25,18 @@ abstract class CoreModule {
     @Module
     companion object {
 
-        @JvmStatic
         @Provides
         @AppScope
+        @JvmStatic
         fun provideCoroutineDispatcherProvider(): CoroutineDispatcherProvider {
             return CoroutinesDispatcherImpl(
                 Main, IO, IO, Default, Executors.newFixedThreadPool(1).asCoroutineDispatcher()
             )
         }
 
-        @JvmStatic
         @Provides
         @AppScope
+        @JvmStatic
         fun provideInternetChecker(application: Application): InternetChecker {
             return InternetCheckerImpl(application.applicationContext)
         }

@@ -75,6 +75,7 @@ dependencies {
 
     implementation(Libs.Google.materialWidget)
     implementation(Libs.AndroidX.recyclerview)
+    implementation(Libs.AndroidX.swiperefresh)
     implementation(Libs.AndroidX.coreKtx)
     implementation(Libs.AndroidX.constraintlayout)
 
