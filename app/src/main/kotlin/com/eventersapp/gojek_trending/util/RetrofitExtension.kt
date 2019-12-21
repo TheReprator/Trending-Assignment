@@ -1,8 +1,8 @@
 package com.eventersapp.gojek_trending.util
 
-import com.eventersapp.gojek_trending.domain.useCases.Result
-import com.eventersapp.gojek_trending.domain.useCases.ErrorResult
-import com.eventersapp.gojek_trending.domain.useCases.Success
+import com.eventersapp.gojek_trending.domain.baseUseCase.Result
+import com.eventersapp.gojek_trending.domain.baseUseCase.ErrorResult
+import com.eventersapp.gojek_trending.domain.baseUseCase.Success
 import retrofit2.HttpException
 import retrofit2.Response
 

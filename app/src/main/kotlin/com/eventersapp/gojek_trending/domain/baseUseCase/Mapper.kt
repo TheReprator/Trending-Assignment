@@ -1,4 +1,4 @@
-package com.eventersapp.gojek_trending.domain.useCases
+package com.eventersapp.gojek_trending.domain.baseUseCase
 
 interface Mapper<in InputModal, out OutputModal> {
     suspend fun map(from: InputModal): OutputModal
