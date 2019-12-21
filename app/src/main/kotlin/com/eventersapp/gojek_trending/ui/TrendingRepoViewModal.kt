@@ -12,8 +12,9 @@ import com.eventersapp.gojek_trending.util.CoroutineDispatcherProvider
 import com.eventersapp.gojek_trending.util.event.Event
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class TrendingRepoViewModal(
+class TrendingRepoViewModal @Inject constructor(
     private val coroutineDispatcherProvider: CoroutineDispatcherProvider,
     private val trendingUseCase: TrendingUseCase
 ) : ViewModel() {

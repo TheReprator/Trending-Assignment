@@ -4,13 +4,14 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import timber.log.Timber
+import javax.inject.Inject
 
 
 interface InternetChecker {
     val isInternetAvailable: Boolean
 }
 
-class InternetCheckerImpl(private val context: Context) : InternetChecker {
+class InternetCheckerImpl @Inject constructor(private val context: Context) : InternetChecker {
 
     override val isInternetAvailable: Boolean =
         try {
