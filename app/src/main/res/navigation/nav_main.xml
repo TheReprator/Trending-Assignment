@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/nav_trending"
-        android:name="com.eventersapp.gojek_trending.TrendingFragment"
+        android:name="com.eventersapp.gojek_trending.ui.TrendingFragment"
         android:label="ConnectFragment"
         tools:layout="@layout/fragment_trending">
 
