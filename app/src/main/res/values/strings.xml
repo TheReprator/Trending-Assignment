@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">GoJek-Trending</string>
+    <string name="interent_wrong">Something Went Wrong..</string>
+    <string name="interent_msg">An alien is probaply blocking your signal</string>
+    <string name="retry">Retry</string>
 </resources>

@@ -83,6 +83,7 @@ dependencies {
     implementation(Libs.Coroutines.android)
 
     implementation(Libs.AndroidX.Navigation.fragment)
+    implementation(Libs.AndroidX.Navigation.ui)
 
     implementation(Libs.AndroidX.Lifecycle.extensions)
     implementation(Libs.AndroidX.Lifecycle.viewmodel)
