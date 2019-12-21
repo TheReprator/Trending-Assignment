@@ -1,4 +1,4 @@
-package com.eventersapp.core.util.event
+package com.eventersapp.gojek_trending.util.event
 
 import androidx.lifecycle.Observer
 
