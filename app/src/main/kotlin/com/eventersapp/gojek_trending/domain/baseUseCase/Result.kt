@@ -1,4 +1,4 @@
-package com.eventersapp.gojek_trending.domain.useCases
+package com.eventersapp.gojek_trending.domain.baseUseCase
 
 sealed class Result<out T> {
     open fun get(): T? = null

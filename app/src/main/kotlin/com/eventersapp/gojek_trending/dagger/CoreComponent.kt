@@ -1,6 +1,6 @@
 package com.eventersapp.gojek_trending.dagger
 
-import android.app.Application
+import android.content.Context
 import com.eventersapp.gojek_trending.GoJekApp
 import com.eventersapp.gojek_trending.dagger.scope.AppScope
 import com.eventersapp.gojek_trending.util.CoroutineDispatcherProvider
@@ -22,3 +22,10 @@ interface CoreComponent {
     val provideRetrofit: Retrofit
     val internetChecker: InternetChecker
 }
+
+interface CoreComponentProvider {
+    fun provideCoreComponent(): CoreComponent
+}
+
+fun Context.coreComponent() =
+    (this.applicationContext as CoreComponentProvider).provideCoreComponent()
