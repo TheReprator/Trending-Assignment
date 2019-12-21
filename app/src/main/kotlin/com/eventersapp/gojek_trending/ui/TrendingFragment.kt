@@ -20,13 +20,13 @@ import com.eventersapp.gojek_trending.ui.di.DaggerTrendingComponent
 import com.eventersapp.gojek_trending.util.event.EventObserver
 import javax.inject.Inject
 
-
 class TrendingFragment : Fragment() {
 
     private lateinit var binding: FragmentTrendingBinding
     private lateinit var errorParentLayout: ConstraintLayout
 
-    private lateinit var trendingRepoAdapter: TrendingRepoAdapter
+    @Inject
+    lateinit var trendingRepoAdapter: TrendingRepoAdapter
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -60,7 +60,6 @@ class TrendingFragment : Fragment() {
             addItemDecoration(
                 LineDividerDecorator(context, R.dimen.divider_height, R.color.colorAccent)
             )
-            trendingRepoAdapter = TrendingRepoAdapter()
             adapter = trendingRepoAdapter
         }
 
@@ -72,12 +71,16 @@ class TrendingFragment : Fragment() {
     private fun initializeListener() {
 
         binding.fragTrendSwipe.setOnRefreshListener {
-            binding.fragTrendSwipe.isRefreshing = false
+
+            binding.fragTrendSwipe.isRefreshing = true
+
+            viewModel.getTrendingUseCaseWithPullToRefresh()
         }
 
-        binding.fragTrendVb.setOnInflateListener { stub, inflated ->
+        binding.fragTrendVb.setOnInflateListener { _, inflated ->
             errorParentLayout = inflated as ConstraintLayout
             errorParentLayout.findViewById<Button>(R.id.interent_bt_retry).setOnClickListener {
+                hideError()
                 viewModel.retry()
             }
         }
@@ -100,6 +103,10 @@ class TrendingFragment : Fragment() {
         })
 
         viewModel.trendingList.observe(viewLifecycleOwner) {
+            if (binding.fragTrendSwipe.isRefreshing)
+                binding.fragTrendSwipe.isRefreshing = false
+
+            showRecyclerView()
             trendingRepoAdapter.submitList(it)
         }
     }
@@ -109,6 +116,11 @@ class TrendingFragment : Fragment() {
             binding.fragTrendVb.inflate()
         else
             errorParentLayout.visibility = View.VISIBLE
+    }
+
+    private fun showRecyclerView()
+    {
+        binding.fragTrendRecy.visibility = View.VISIBLE
     }
 
     private fun hideError() {

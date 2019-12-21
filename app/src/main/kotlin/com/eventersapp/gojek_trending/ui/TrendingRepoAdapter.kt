@@ -10,8 +10,9 @@ import coil.transform.CircleCropTransformation
 import com.eventersapp.gojek_trending.R
 import com.eventersapp.gojek_trending.databinding.RowTrendingBinding
 import com.eventersapp.gojek_trending.domain.TrendingModal
+import javax.inject.Inject
 
-class TrendingRepoAdapter : ListAdapter<TrendingModal, VHTrendingRepo>(TrendingRepoDiffUtil()) {
+class TrendingRepoAdapter @Inject constructor(): ListAdapter<TrendingModal, VHTrendingRepo>(TrendingRepoDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHTrendingRepo {
         val binding = RowTrendingBinding.inflate(LayoutInflater.from(parent.context))
@@ -46,5 +47,8 @@ class TrendingRepoAdapter : ListAdapter<TrendingModal, VHTrendingRepo>(TrendingR
 class VHTrendingRepo(
     val binding: RowTrendingBinding
 ) : RecyclerView.ViewHolder(binding.root)
+{
+
+}
 
 

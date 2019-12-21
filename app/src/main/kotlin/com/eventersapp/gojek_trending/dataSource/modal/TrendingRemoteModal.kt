@@ -18,21 +18,21 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 )
 class TrendingRemoteModal(
     @JsonProperty("author")
-    val author: String,
+    val author: String ="",
     @JsonProperty("name")
-    val name: String,
+    val name: String = "",
     @JsonProperty("avatar")
-    val avatar: String,
+    val avatar: String = "",
     @JsonProperty("url")
-    val url: String,
+    val url: String = "",
     @JsonProperty("description")
-    val description: String,
+    val description: String = "",
     @JsonProperty("language")
-    val language: String,
+    val language: String = "",
     @JsonProperty("languageColor")
-    val languageColor: String,
+    val languageColor: String ="",
     @JsonProperty("stars")
-    val stars: Int,
+    val stars: Int = 0,
     @JsonProperty("forks")
-    val forks: Int
+    val forks: Int = 0
 )

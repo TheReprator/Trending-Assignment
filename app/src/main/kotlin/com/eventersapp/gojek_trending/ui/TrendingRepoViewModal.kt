@@ -38,6 +38,10 @@ class TrendingRepoViewModal @Inject constructor(
     private fun getTrendingUseCase() {
         _isLoading.value = Event(true)
 
+        getTrendingUseCaseWithPullToRefresh()
+    }
+
+    fun getTrendingUseCaseWithPullToRefresh() {
         viewModelScope.launch(coroutineDispatcherProvider.io) {
             val result = trendingUseCase.run(Unit)
             withContext(coroutineDispatcherProvider.main)

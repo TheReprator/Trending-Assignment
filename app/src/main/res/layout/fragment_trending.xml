@@ -18,6 +18,7 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <ProgressBar
+        android:visibility="gone"
         android:id="@+id/fragTrend_pb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,5 +29,5 @@
         android:id="@+id/fragTrend_vb"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:inflatedId="@layout/no_internet" />
+        android:layout="@layout/no_internet" />
 </RelativeLayout>

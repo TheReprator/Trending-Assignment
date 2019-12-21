@@ -15,10 +15,9 @@ class LineDividerDecorator(context: Context, @DimenRes divider_height: Int, @Col
     RecyclerView.ItemDecoration() {
 
     private val dividerHeight: Int
-    private val dividerPaint: Paint
+    private val dividerPaint: Paint = Paint()
 
     init {
-        dividerPaint = Paint()
         dividerPaint.color = ContextCompat.getColor(context, color)
         dividerHeight = context.resources.getDimensionPixelSize(divider_height)
     }
@@ -35,12 +34,12 @@ class LineDividerDecorator(context: Context, @DimenRes divider_height: Int, @Col
 
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         val childCount = parent.childCount
-        val left = parent.paddingLeft as Float
-        val right = parent.width - parent.paddingRight as Float
+        val left = parent.paddingLeft.toFloat()
+        val right = parent.width - parent.paddingRight.toFloat()
         for (i in 0 until childCount - 1) {
             val view: View = parent.getChildAt(i)
-            val top = view.getBottom() as Float
-            val bottom = view.getBottom() + dividerHeight as Float
+            val top = view.bottom.toFloat()
+            val bottom = view.bottom + dividerHeight.toFloat()
             c.drawRect(left, top, right, bottom, dividerPaint)
         }
     }
