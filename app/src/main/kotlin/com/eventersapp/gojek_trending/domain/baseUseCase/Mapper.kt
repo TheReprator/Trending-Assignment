@@ -12,3 +12,7 @@ interface MapperFromTo<InputModal, OutputModal> {
 interface IndexedMapper<F, T> {
     suspend fun map(index: Int, from: F): T
 }
+
+fun <F, T> Mapper<F, T>.toListMapper(): suspend (List<F>) -> List<T> {
+    return { list -> list.map { item -> map(item) } }
+}

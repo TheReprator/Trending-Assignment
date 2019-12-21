@@ -6,5 +6,5 @@ import retrofit2.http.POST
 
 interface TrendingApiService {
     @POST("repositories")
-    suspend fun fetchTrendingRepo(): Response<TrendingRemoteModal>
+    suspend fun fetchTrendingRepo(): Response<List<TrendingRemoteModal>>
 }

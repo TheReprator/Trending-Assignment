@@ -6,7 +6,7 @@ import com.eventersapp.gojek_trending.domain.baseUseCase.Result
 import com.eventersapp.gojek_trending.domain.trendingRepository.TrendingDomainRepository
 
 class TrendingUseCase(private val trendingRepository: TrendingDomainRepository) :
-    UseCase<TrendingModal, Unit> {
-    override suspend fun run(params: Unit): Result<TrendingModal> =
+    UseCase<List<TrendingModal>, Unit> {
+    override suspend fun run(params: Unit): Result<List<TrendingModal>> =
         trendingRepository.getTrendingRepo()
 }

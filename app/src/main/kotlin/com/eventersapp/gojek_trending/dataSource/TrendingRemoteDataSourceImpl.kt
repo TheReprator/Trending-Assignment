@@ -5,6 +5,7 @@ import com.eventersapp.gojek_trending.dataSource.modal.remoteMapper.TrendingMapp
 import com.eventersapp.gojek_trending.domain.TrendingModal
 import com.eventersapp.gojek_trending.util.safeApiCall
 import com.eventersapp.gojek_trending.domain.baseUseCase.Result
+import com.eventersapp.gojek_trending.domain.baseUseCase.toListMapper
 import com.eventersapp.gojek_trending.util.toResult
 import javax.inject.Inject
 
@@ -13,13 +14,11 @@ class TrendingRemoteDataSourceImpl @Inject constructor(
 ) : TrendingRemoteDataSource {
 
 
-    private suspend fun getTrendingRepoRemote(): Result<TrendingModal> {
-        return trendingApiService.fetchTrendingRepo().toResult {
-            trendingMapper.map(it)
-        }
+    private suspend fun getTrendingRepoRemote(): Result<List<TrendingModal>> {
+        return trendingApiService.fetchTrendingRepo().toResult(trendingMapper.toListMapper())
     }
 
-    override suspend fun trendingRepo(): Result<TrendingModal> =
+    override suspend fun trendingRepo(): Result<List<TrendingModal>> =
         safeApiCall(call = { getTrendingRepoRemote() })
 
 }
