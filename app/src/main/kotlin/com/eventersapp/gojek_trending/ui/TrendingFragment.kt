@@ -54,6 +54,8 @@ class TrendingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        disableSwipeRefresh()
+
         with(binding.fragTrendRecy) {
             layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -72,7 +74,7 @@ class TrendingFragment : Fragment() {
 
         binding.fragTrendSwipe.setOnRefreshListener {
 
-            binding.fragTrendSwipe.isRefreshing = true
+            enableSwipeRefresh()
 
             viewModel.getTrendingUseCaseWithPullToRefresh()
         }
@@ -80,6 +82,7 @@ class TrendingFragment : Fragment() {
         binding.fragTrendVb.setOnInflateListener { _, inflated ->
             errorParentLayout = inflated as ConstraintLayout
             errorParentLayout.findViewById<Button>(R.id.interent_bt_retry).setOnClickListener {
+
                 hideError()
                 viewModel.retry()
             }
@@ -104,10 +107,12 @@ class TrendingFragment : Fragment() {
 
         viewModel.trendingList.observe(viewLifecycleOwner) {
             if (binding.fragTrendSwipe.isRefreshing)
-                binding.fragTrendSwipe.isRefreshing = false
+                disableSwipeRefresh()
 
             showRecyclerView()
             trendingRepoAdapter.submitList(it)
+
+            enableSwipeRefresh()
         }
     }
 
@@ -116,6 +121,16 @@ class TrendingFragment : Fragment() {
             binding.fragTrendVb.inflate()
         else
             errorParentLayout.visibility = View.VISIBLE
+    }
+
+    private fun enableSwipeRefresh()
+    {
+        binding.fragTrendSwipe.isRefreshing = true
+    }
+
+    private fun disableSwipeRefresh()
+    {
+        binding.fragTrendSwipe.isRefreshing = false
     }
 
     private fun showRecyclerView()
