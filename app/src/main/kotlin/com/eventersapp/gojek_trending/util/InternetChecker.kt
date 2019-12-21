@@ -7,21 +7,22 @@ import timber.log.Timber
 
 
 interface InternetChecker {
-    fun isOnline(): Boolean
+    val isInternetAvailable: Boolean
 }
 
 class InternetCheckerImpl(private val context: Context) : InternetChecker {
-    override fun isOnline(): Boolean {
+
+    override val isInternetAvailable: Boolean =
         try {
             val connectivityManager = context
                 .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val networkInfo: NetworkInfo = connectivityManager.getActiveNetworkInfo()
             val connected = networkInfo != null && networkInfo.isAvailable &&
                     networkInfo.isConnected
-            return connected
+            connected
         } catch (e: Exception) {
             Timber.v("connectivity${e.message}")
+            false
         }
-        return false
-    }
+
 }
