@@ -24,6 +24,24 @@ object TrendingRepo {
         )
     )
 
+    val FAKE_REPO_REMOTE = listOf(
+        TrendingRemoteModal(
+            "One", "Vikram", "https://image.flaticon.com/icons/png/512/160/160138.png",
+            "www.github.com", "Doing great", "Kotlin", "Yellow",
+            1220, 220
+        ),
+        TrendingRemoteModal(
+            "TWo", "Singh", "https://image.flaticon.com/icons/png/512/160/160138.png",
+            "www.github.com", "Doing great", "Java", "Gree",
+            1320, 220
+        ),
+        TrendingRemoteModal(
+            "Three", "Hari", "https://image.flaticon.com/icons/png/512/160/160138.png",
+            "www.github.com", "Doing great", "Python", "Pink",
+            1210, 220
+        )
+    )
+
     val FAKE_ERROR = ErrorResult(message ="Internet error occured")
 }
 

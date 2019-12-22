@@ -109,6 +109,9 @@ dependencies {
 
     testImplementation(Libs.OkHttp.mockWebServer)
 
+    androidTestImplementation(Libs.TestDependencies.instrumentedJunit)
     androidTestImplementation(Libs.TestDependencies.Mockk.instrumentedTest)
-    androidTestImplementation(Libs.TestDependencies.junitInstrumented)
+    androidTestImplementation(Libs.TestDependencies.instrumentedEspressoCore)
+    androidTestImplementation(Libs.TestDependencies.instrumentedEspressoIntent)
+    androidTestImplementation(Libs.TestDependencies.instrumentedEspressoContrib)
 }
