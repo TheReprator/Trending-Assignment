@@ -1,21 +1,18 @@
 package com.eventersapp.gojek_trending.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.eventersapp.gojek_trending.domain.TrendingModal
-import com.eventersapp.gojek_trending.domain.baseUseCase.Result
 import com.eventersapp.gojek_trending.domain.baseUseCase.Success
 import com.eventersapp.gojek_trending.domain.trendingUseCase.TrendingUseCase
 import com.eventersapp.gojek_trending.ui.fakeData.TrendingRepo
 import com.eventersapp.gojek_trending.util.CoroutinesDispatcherImpl
+import com.eventersapp.gojek_trending.util.event.Event
 import io.mockk.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Unconfined
 import kotlinx.coroutines.asCoroutineDispatcher
-import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.test.setMain
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -43,19 +40,23 @@ class TrendingRepoViewModalTest {
 
     @Test
     fun `Trending Repo requested when ViewModel is created`() {
-        val observer = mockk<Observer<List<TrendingModal>>>(relaxed = true)
+        val observerData = mockk<Observer<List<TrendingModal>>>(relaxed = true)
+        val observerLoader = mockk<Observer<Event<Boolean>>>(relaxed = true)
+
         val result = TrendingRepo.FAKE_REPO
         coEvery {
             trendingUseCase.run(Unit)
         } returns Success<List<TrendingModal>>(result)
 
         trendingRepoViewModal = TrendingRepoViewModal(appDispatchers, trendingUseCase)
-        trendingRepoViewModal.trendingList.observeForever(observer)
+        trendingRepoViewModal.isLoading.observeForever(observerLoader)
+        trendingRepoViewModal.trendingList.observeForever(observerData)
 
-        verify {
-            observer.onChanged(result)
+        verifySequence {
+            observerLoader.onChanged(Event(true))
+            observerLoader.onChanged(Event(false))
+            observerData.onChanged(result)
         }
-
-        confirmVerified(observer)
+        confirmVerified(observerData)
     }
 }
