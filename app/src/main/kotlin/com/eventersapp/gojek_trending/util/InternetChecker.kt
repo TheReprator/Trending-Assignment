@@ -8,12 +8,12 @@ import javax.inject.Inject
 
 
 interface InternetChecker {
-    val isInternetAvailable: Boolean
+    fun isInternetAvailable(): Boolean
 }
 
 class InternetCheckerImpl @Inject constructor(private val context: Context) : InternetChecker {
 
-    override val isInternetAvailable: Boolean =
+    override fun isInternetAvailable(): Boolean =
         try {
             val connectivityManager = context
                 .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

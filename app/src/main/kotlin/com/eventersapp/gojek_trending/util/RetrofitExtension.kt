@@ -5,6 +5,7 @@ import com.eventersapp.gojek_trending.domain.baseUseCase.ErrorResult
 import com.eventersapp.gojek_trending.domain.baseUseCase.Success
 import retrofit2.HttpException
 import retrofit2.Response
+import timber.log.Timber
 
 fun <T> Response<T>.bodyOrThrow(): T {
     if (!isSuccessful) throw HttpException(this)
@@ -28,9 +29,13 @@ suspend fun <T> Response<T>.toResult(): Result<T> = toResult { it }
 @Suppress("REDUNDANT_INLINE_SUSPEND_FUNCTION_TYPE")
 suspend fun <T, E> Response<T>.toResult(mapper: suspend (T) -> E): Result<E> {
     if (isSuccessful) {
+        val isFromNetwork =isFromNetwork()
+        val isFromCache =isFromCache()
+        Timber.e("isFromNetwork : ${isFromNetwork}")
+        Timber.e("isFromCache : ${isFromCache}")
         return Success(
             data = mapper(bodyOrThrow()),
-            responseModified = isFromNetwork()
+            responseModified = isFromNetwork
         )
     } else {
         return ErrorResult(

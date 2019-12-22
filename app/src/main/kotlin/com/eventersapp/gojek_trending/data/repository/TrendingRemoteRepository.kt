@@ -13,9 +13,9 @@ class TrendingRemoteRepository @Inject constructor(
     private val connectionDetector: InternetChecker
 ) : TrendingDomainRepository {
     override suspend fun getTrendingRepo(): Result<List<TrendingModal>> {
-        return if (connectionDetector.isInternetAvailable)
-            trendingRemoteDataSource.trendingRepo()
-        else
-            ErrorResult(message = "No internet connection.")
+        //return if (connectionDetector.isInternetAvailable)
+        return trendingRemoteDataSource.trendingRepo()
+        /*else
+            ErrorResult(message = "No internet connection.")*/
     }
 }

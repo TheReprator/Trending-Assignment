@@ -26,6 +26,7 @@ class TrendingRepoAdapter @Inject constructor(private val itemClickListener: (In
         holder.binding.trendImgUser.load(repoModal.avatar) {
             crossfade(true)
             placeholder(R.drawable.ic_nointernet_connection)
+            error(R.drawable.ic_nointernet_connection)
             transformations(CircleCropTransformation())
         }
 

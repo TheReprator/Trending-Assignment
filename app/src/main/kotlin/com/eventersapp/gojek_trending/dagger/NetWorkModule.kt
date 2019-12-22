@@ -1,7 +1,9 @@
 package com.eventersapp.gojek_trending.dagger
 
 import com.eventersapp.gojek_trending.BuildConfig
+import com.eventersapp.gojek_trending.GoJekApp
 import com.eventersapp.gojek_trending.dagger.scope.AppScope
+import com.eventersapp.gojek_trending.util.InternetChecker
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -12,13 +14,17 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import dagger.Lazy
 import dagger.Module
 import dagger.Provides
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
+import java.io.File
 import java.util.concurrent.TimeUnit
 
 private const val CONNECTION_TIME = 90L
+private const val CACHE_SIZE = (10 * 1024 * 1024).toLong()
+private const val CACHE_NAME = "JoGekofflineCache"
 
 @Module
 class NetWorkModule {
@@ -32,6 +38,25 @@ class NetWorkModule {
                 HttpLoggingInterceptor.Level.NONE
             }
         }
+
+    @Provides
+    fun provideCacheInterceptor(): CacheInterceptor =
+        CacheInterceptor(offlineValidCache())
+
+    @Provides
+    fun provideOfflineCacheInterceptor(internetChecker: InternetChecker): OfflineCacheInterceptor =
+        OfflineCacheInterceptor(
+            offlineValidCache(),
+            internetChecker
+        )
+
+    @Provides
+    fun provideFile(applicationContext: GoJekApp): File =
+        File(applicationContext.cacheDir, CACHE_NAME)
+
+    @Provides
+    fun provideCache(file: File): Cache =
+        Cache(file, CACHE_SIZE)
 
     @Provides
     @AppScope
@@ -49,16 +74,21 @@ class NetWorkModule {
 
     @Provides
     fun provideOkHttpClient(
-        httpLoggingInterceptor: HttpLoggingInterceptor
+        httpLoggingInterceptor: HttpLoggingInterceptor,
+        offlineCacheInterceptor: OfflineCacheInterceptor,
+        cacheInterceptor: CacheInterceptor,
+        cache: Cache
     ): OkHttpClient {
         return OkHttpClient.Builder().apply {
             connectTimeout(CONNECTION_TIME, TimeUnit.SECONDS)
             readTimeout(CONNECTION_TIME, TimeUnit.SECONDS)
             writeTimeout(CONNECTION_TIME, TimeUnit.SECONDS)
             addInterceptor(httpLoggingInterceptor)
+            addInterceptor(offlineCacheInterceptor)
+            addNetworkInterceptor(cacheInterceptor)
             followRedirects(true)
             followSslRedirects(true)
-            cache(null)
+            cache(cache)
             retryOnConnectionFailure(false)
         }.build()
     }
@@ -86,4 +116,5 @@ class NetWorkModule {
 
 
     private fun baseUrl() = BuildConfig.HOST
+    private fun offlineValidCache() = 2
 }
