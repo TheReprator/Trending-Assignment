@@ -180,6 +180,9 @@ object Libs {
         const val jupiterEngine = "org.junit.jupiter:junit-jupiter-engine:5.5.2"
         const val junit = "junit:junit:4.12"
         const val junitInstrumented = "androidx.test.ext:junit:1.1.1"
+
+        const val archCoreTesting = "android.arch.core:core-testing:1.1.1"
+        const val coroutinesTesting = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.3"
     }
 
     //https://github.com/satoshun-android-example/ViewModelSavedState/blob/master/app/build.gradle

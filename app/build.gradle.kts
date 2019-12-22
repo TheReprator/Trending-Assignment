@@ -100,9 +100,12 @@ dependencies {
     implementation(Libs.Coil.coil)
 
 
-    testImplementation(Libs.TestDependencies.Mockk.unitTest)
     testImplementation(Libs.TestDependencies.junit)
-    //testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation(Libs.TestDependencies.Mockk.unitTest)
+    testImplementation(Libs.TestDependencies.archCoreTesting)
+    testImplementation(Libs.TestDependencies.coroutinesTesting)
+
+    testImplementation(Libs.OkHttp.mockWebServer)
 
     androidTestImplementation(Libs.TestDependencies.Mockk.instrumentedTest)
     androidTestImplementation(Libs.TestDependencies.junitInstrumented)
