@@ -19,6 +19,8 @@ class TrendingRepoViewModal @Inject constructor(
     private val trendingUseCase: TrendingUseCase
 ) : ViewModel() {
 
+    private var selectedRecyclerPosition = -1
+
     private val _trendingList = MutableLiveData<MutableList<TrendingModal>>()
     val trendingList: LiveData<MutableList<TrendingModal>>
         get() = _trendingList
@@ -67,19 +69,17 @@ class TrendingRepoViewModal @Inject constructor(
         getTrendingUseCase()
     }
 
-    var selectedPosition = -1
-
     fun positionClicked(selectedPosition: Int) {
         when (selectedPosition) {
             -1 -> {
-                this.selectedPosition = selectedPosition
+                this.selectedRecyclerPosition = selectedPosition
 
                 val originalList = _trendingList.value!!
                 originalList[selectedPosition] = originalList[selectedPosition].copy(isCollapsed = false)
 
                 _trendingList.value = originalList
             }
-            this.selectedPosition -> {
+            this.selectedRecyclerPosition -> {
                 val originalList = _trendingList.value!!
                 val item = originalList[selectedPosition]
                 originalList[selectedPosition] = item.copy(isCollapsed = !item.isCollapsed)
@@ -90,8 +90,8 @@ class TrendingRepoViewModal @Inject constructor(
                 val originalList = _trendingList.value!!
                 originalList[selectedPosition] = originalList[selectedPosition].copy(isCollapsed = false)
 
-                val previous = this.selectedPosition
-                this.selectedPosition = selectedPosition
+                val previous = this.selectedRecyclerPosition
+                this.selectedRecyclerPosition = selectedPosition
 
                 if(previous != -1)
                     originalList[previous] = originalList[previous].copy(isCollapsed = true)
