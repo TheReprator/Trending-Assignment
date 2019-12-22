@@ -1,0 +1,255 @@
+[
+  {
+    "author": "monicahq",
+    "name": "monica",
+    "avatar": "https://github.com/monicahq.png",
+    "url": "https://github.com/monicahq/monica",
+    "description": "Personal CRM. Remember everything about your friends and family.",
+    "language": "PHP",
+    "languageColor": "#4F5D95",
+    "stars": 8400,
+    "forks": 1033,
+    "currentPeriodStars": 210,
+    "builtBy": [
+      {
+        "username": "asbiin",
+        "href": "https://github.com/asbiin",
+        "avatar": "https://avatars2.githubusercontent.com/u/25419741"
+      },
+      {
+        "username": "djaiss",
+        "href": "https://github.com/djaiss",
+        "avatar": "https://avatars1.githubusercontent.com/u/61099"
+      }
+    ]
+  },
+  {
+    "author": "naptha",
+    "name": "tesseract.js",
+    "avatar": "https://github.com/naptha.png",
+    "url": "https://github.com/naptha/tesseract.js",
+    "description": "Pure Javascript OCR for more than 100 Languages 📖🎉🖥",
+    "language": "JavaScript",
+    "languageColor": "#f1e05a",
+    "stars": 19138,
+    "forks": 1296,
+    "currentPeriodStars": 671,
+    "builtBy": [
+      {
+        "username": "jeromewu",
+        "href": "https://github.com/jeromewu",
+        "avatar": "https://avatars3.githubusercontent.com/u/5723124"
+      },
+      {
+        "username": "bijection",
+        "href": "https://github.com/bijection",
+        "avatar": "https://avatars3.githubusercontent.com/u/8824442"
+      },
+      {
+        "username": "antimatter15",
+        "href": "https://github.com/antimatter15",
+        "avatar": "https://avatars2.githubusercontent.com/u/30054"
+      },
+      {
+        "username": "loderunner",
+        "href": "https://github.com/loderunner",
+        "avatar": "https://avatars0.githubusercontent.com/u/731497"
+      }
+    ]
+  },
+  {
+    "author": "A3M4",
+    "name": "YouTube-Report",
+    "avatar": "https://github.com/A3M4.png",
+    "url": "https://github.com/A3M4/YouTube-Report",
+    "description": "📊 Generate a personal YouTube report from your Google Takeout data",
+    "language": "Python",
+    "languageColor": "#3572A5",
+    "stars": 399,
+    "forks": 30,
+    "currentPeriodStars": 107,
+    "builtBy": [
+      {
+        "username": "A3M4",
+        "href": "https://github.com/A3M4",
+        "avatar": "https://avatars0.githubusercontent.com/u/56005495"
+      },
+      {
+        "username": "mkd1997",
+        "href": "https://github.com/mkd1997",
+        "avatar": "https://avatars3.githubusercontent.com/u/2765149"
+      },
+      {
+        "username": "Brithub",
+        "href": "https://github.com/Brithub",
+        "avatar": "https://avatars2.githubusercontent.com/u/9434430"
+      },
+      {
+        "username": "SetZero",
+        "href": "https://github.com/SetZero",
+        "avatar": "https://avatars3.githubusercontent.com/u/6242238"
+      },
+      {
+        "username": "qwerty123443",
+        "href": "https://github.com/qwerty123443",
+        "avatar": "https://avatars0.githubusercontent.com/u/6923387"
+      }
+    ]
+  },
+  {
+    "author": "chinese-poetry",
+    "name": "chinese-poetry",
+    "avatar": "https://github.com/chinese-poetry.png",
+    "url": "https://github.com/chinese-poetry/chinese-poetry",
+    "description": "The most comprehensive database of Chinese poetry 🧶最全中华古诗词数据库, 唐宋两朝近一万四千古诗人, 接近5.5万首唐诗加26万宋诗. 两宋时期1564位词人，21050首词。",
+    "language": "JavaScript",
+    "languageColor": "#f1e05a",
+    "stars": 22040,
+    "forks": 4087,
+    "currentPeriodStars": 437,
+    "builtBy": [
+      {
+        "username": "jackeyGao",
+        "href": "https://github.com/jackeyGao",
+        "avatar": "https://avatars0.githubusercontent.com/u/2869650"
+      },
+      {
+        "username": "animalize",
+        "href": "https://github.com/animalize",
+        "avatar": "https://avatars2.githubusercontent.com/u/11244865"
+      },
+      {
+        "username": "FleetingWang",
+        "href": "https://github.com/FleetingWang",
+        "avatar": "https://avatars1.githubusercontent.com/u/5262141"
+      },
+      {
+        "username": "O70",
+        "href": "https://github.com/O70",
+        "avatar": "https://avatars1.githubusercontent.com/u/19946794"
+      },
+      {
+        "username": "smilevent",
+        "href": "https://github.com/smilevent",
+        "avatar": "https://avatars3.githubusercontent.com/u/11004456"
+      }
+    ]
+  },
+  {
+    "author": "pjialin",
+    "name": "py12306",
+    "avatar": "https://github.com/pjialin.png",
+    "url": "https://github.com/pjialin/py12306",
+    "description": "🚂 12306 购票助手，支持集群，多账号，多任务购票以及 Web 页面管理",
+    "language": "Python",
+    "languageColor": "#3572A5",
+    "stars": 8134,
+    "forks": 2085,
+    "currentPeriodStars": 121,
+    "builtBy": [
+      {
+        "username": "pjialin",
+        "href": "https://github.com/pjialin",
+        "avatar": "https://avatars2.githubusercontent.com/u/12911871"
+      },
+      {
+        "username": "kbj",
+        "href": "https://github.com/kbj",
+        "avatar": "https://avatars2.githubusercontent.com/u/12494443"
+      },
+      {
+        "username": "Echowxsy",
+        "href": "https://github.com/Echowxsy",
+        "avatar": "https://avatars2.githubusercontent.com/u/12933379"
+      },
+      {
+        "username": "qinglife",
+        "href": "https://github.com/qinglife",
+        "avatar": "https://avatars0.githubusercontent.com/u/52159482"
+      },
+      {
+        "username": "bnpzsx",
+        "href": "https://github.com/bnpzsx",
+        "avatar": "https://avatars0.githubusercontent.com/u/22561030"
+      }
+    ]
+  },
+  {
+    "author": "testerSunshine",
+    "name": "12306",
+    "avatar": "https://github.com/testerSunshine.png",
+    "url": "https://github.com/testerSunshine/12306",
+    "description": "12306智能刷票，订票",
+    "language": "Python",
+    "languageColor": "#3572A5",
+    "stars": 20503,
+    "forks": 6472,
+    "currentPeriodStars": 653,
+    "builtBy": [
+      {
+        "username": "testerSunshine",
+        "href": "https://github.com/testerSunshine",
+        "avatar": "https://avatars3.githubusercontent.com/u/20162049"
+      },
+      {
+        "username": "MonsterTan",
+        "href": "https://github.com/MonsterTan",
+        "avatar": "https://avatars1.githubusercontent.com/u/22610809"
+      },
+      {
+        "username": "cclauss",
+        "href": "https://github.com/cclauss",
+        "avatar": "https://avatars3.githubusercontent.com/u/3709715"
+      },
+      {
+        "username": "stormeyes",
+        "href": "https://github.com/stormeyes",
+        "avatar": "https://avatars3.githubusercontent.com/u/5072174"
+      },
+      {
+        "username": "BlancRay",
+        "href": "https://github.com/BlancRay",
+        "avatar": "https://avatars1.githubusercontent.com/u/9410067"
+      }
+    ]
+  },
+  {
+    "author": "microsoft",
+    "name": "vscode",
+    "avatar": "https://github.com/microsoft.png",
+    "url": "https://github.com/microsoft/vscode",
+    "description": "Visual Studio Code",
+    "language": "TypeScript",
+    "languageColor": "#2b7489",
+    "stars": 89009,
+    "forks": 13400,
+    "currentPeriodStars": 186,
+    "builtBy": [
+      {
+        "username": "bpasero",
+        "href": "https://github.com/bpasero",
+        "avatar": "https://avatars1.githubusercontent.com/u/900690"
+      },
+      {
+        "username": "joaomoreno",
+        "href": "https://github.com/joaomoreno",
+        "avatar": "https://avatars1.githubusercontent.com/u/22350"
+      },
+      {
+        "username": "jrieken",
+        "href": "https://github.com/jrieken",
+        "avatar": "https://avatars2.githubusercontent.com/u/1794099"
+      },
+      {
+        "username": "isidorn",
+        "href": "https://github.com/isidorn",
+        "avatar": "https://avatars1.githubusercontent.com/u/1926584"
+      },
+      {
+        "username": "mjbvz",
+        "href": "https://github.com/mjbvz",
+        "avatar": "https://avatars2.githubusercontent.com/u/12821956"
+      }
+    ]
+  }
+]

@@ -53,7 +53,9 @@ android {
     sourceSets {
         getByName("main").java.srcDirs("src/main/kotlin/")
         getByName("test").java.srcDirs("src/test/kotlin/")
+        getByName("test").resources.srcDirs("src/test/resources/")
         getByName("androidTest").java.srcDirs("src/androidTest/kotlin/")
+        getByName("androidTest").resources.srcDirs("src/androidTest/resources/")
     }
 
     testOptions {
