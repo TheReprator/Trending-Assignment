@@ -9,9 +9,7 @@ import com.eventersapp.gojek_trending.domain.baseUseCase.Result
 import javax.inject.Inject
 
 class TrendingRemoteRepository @Inject constructor(
-    private val trendingRemoteDataSource: TrendingRemoteDataSource,
-    private val connectionDetector: InternetChecker
-) : TrendingDomainRepository {
+    private val trendingRemoteDataSource: TrendingRemoteDataSource) : TrendingDomainRepository {
     override suspend fun getTrendingRepo(): Result<List<TrendingModal>> {
         //return if (connectionDetector.isInternetAvailable)
         return trendingRemoteDataSource.trendingRepo()

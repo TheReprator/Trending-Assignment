@@ -51,9 +51,9 @@ abstract class ConnectModule {
         @FragmentScope
         @JvmStatic
         fun provideTrendingDomainRepository(
-            trendingRemoteDataSource: TrendingRemoteDataSource, connectionDetector: InternetChecker
+            trendingRemoteDataSource: TrendingRemoteDataSource
         ): TrendingDomainRepository {
-            return TrendingRemoteRepository(trendingRemoteDataSource, connectionDetector)
+            return TrendingRemoteRepository(trendingRemoteDataSource)
         }
 
         @Provides

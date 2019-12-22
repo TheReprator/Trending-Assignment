@@ -23,8 +23,6 @@ class TrendingApiServiceTest {
     private lateinit var mockWebServer: MockWebServer
     private lateinit var trendingApiService: TrendingApiService
 
-    //private val trendingMapper = mockk<TrendingMapper>(relaxed = true)
-
     @Before
     fun setUp() {
         mockWebServer = MockWebServer()
