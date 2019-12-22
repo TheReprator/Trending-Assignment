@@ -1,5 +1,6 @@
 package com.eventersapp.gojek_trending.dagger
 
+
 import com.eventersapp.gojek_trending.BuildConfig
 import com.eventersapp.gojek_trending.GoJekApp
 import com.eventersapp.gojek_trending.dagger.scope.AppScope

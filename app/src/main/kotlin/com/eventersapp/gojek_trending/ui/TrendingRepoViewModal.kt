@@ -21,8 +21,8 @@ class TrendingRepoViewModal @Inject constructor(
 
     private var selectedRecyclerPosition = -1
 
-    private val _trendingList = MutableLiveData<MutableList<TrendingModal>>()
-    val trendingList: LiveData<MutableList<TrendingModal>>
+    private val _trendingList = MutableLiveData<List<TrendingModal>>()
+    val trendingList: LiveData<List<TrendingModal>>
         get() = _trendingList
 
     private val _isLoading = MutableLiveData<Event<Boolean>>()
@@ -52,7 +52,7 @@ class TrendingRepoViewModal @Inject constructor(
 
                 when (result) {
                     is Success -> {
-                        _trendingList.value = result.data.toMutableList()
+                        _trendingList.value = result.data
                     }
 
                     is ErrorResult -> {
@@ -74,13 +74,13 @@ class TrendingRepoViewModal @Inject constructor(
             -1 -> {
                 this.selectedRecyclerPosition = selectedPosition
 
-                val originalList = _trendingList.value!!
+                val originalList = _trendingList.value!!.toMutableList()
                 originalList[selectedPosition] = originalList[selectedPosition].copy(isCollapsed = false)
 
                 _trendingList.value = originalList
             }
             this.selectedRecyclerPosition -> {
-                val originalList = _trendingList.value!!
+                val originalList = _trendingList.value!!.toMutableList()
                 val item = originalList[selectedPosition]
                 originalList[selectedPosition] = item.copy(isCollapsed = !item.isCollapsed)
 
@@ -88,15 +88,19 @@ class TrendingRepoViewModal @Inject constructor(
             }
             else -> {
                 val originalList = _trendingList.value!!
-                originalList[selectedPosition] = originalList[selectedPosition].copy(isCollapsed = false)
+                val newSelectedItem = originalList[selectedPosition].copy(isCollapsed = false)
+
+                val listData = _trendingList.value!!.toMutableList()
+                listData[selectedPosition] = newSelectedItem
 
                 val previous = this.selectedRecyclerPosition
                 this.selectedRecyclerPosition = selectedPosition
 
-                if(previous != -1)
-                    originalList[previous] = originalList[previous].copy(isCollapsed = true)
-
-                _trendingList.value = originalList
+                if(previous != -1) {
+                    val previousItem = originalList[previous].copy(isCollapsed = true)
+                    listData[previous] = previousItem
+                }
+                _trendingList.value = listData
             }
         }
     }
