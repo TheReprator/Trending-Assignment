@@ -1,6 +1,7 @@
 package com.eventersapp.gojek_trending.ui.fakeData
 
 import com.eventersapp.gojek_trending.domain.TrendingModal
+import com.eventersapp.gojek_trending.domain.baseUseCase.ErrorResult
 
 
 object TrendingRepo {
@@ -22,6 +23,8 @@ object TrendingRepo {
             1210, 220
         )
     )
+
+    val FAKE_ERROR = ErrorResult(message ="Internet error occured")
 }
 
 
