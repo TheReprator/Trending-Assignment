@@ -102,7 +102,7 @@ dependencies {
 
     testImplementation(Libs.TestDependencies.Mockk.unitTest)
     testImplementation(Libs.TestDependencies.junit)
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    //testImplementation("org.junit.jupiter:junit-jupiter")
 
     androidTestImplementation(Libs.TestDependencies.Mockk.instrumentedTest)
     androidTestImplementation(Libs.TestDependencies.junitInstrumented)

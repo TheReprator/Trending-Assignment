@@ -66,4 +66,38 @@ class TrendingRepoViewModal @Inject constructor(
 
         getTrendingUseCase()
     }
+
+    var selectedPosition = -1
+
+    fun positionClicked(selectedPosition: Int) {
+        when (selectedPosition) {
+            -1 -> {
+                this.selectedPosition = selectedPosition
+
+                val originalList = _trendingList.value!!
+                originalList[selectedPosition] = originalList[selectedPosition].copy(isCollapsed = false)
+
+                _trendingList.value = originalList
+            }
+            this.selectedPosition -> {
+                val originalList = _trendingList.value!!
+                val item = originalList[selectedPosition]
+                originalList[selectedPosition] = item.copy(isCollapsed = !item.isCollapsed)
+
+                _trendingList.value = originalList
+            }
+            else -> {
+                val originalList = _trendingList.value!!
+                originalList[selectedPosition] = originalList[selectedPosition].copy(isCollapsed = false)
+
+                val previous = this.selectedPosition
+                this.selectedPosition = selectedPosition
+
+                if(previous != -1)
+                    originalList[previous] = originalList[previous].copy(isCollapsed = true)
+
+                _trendingList.value = originalList
+            }
+        }
+    }
 }

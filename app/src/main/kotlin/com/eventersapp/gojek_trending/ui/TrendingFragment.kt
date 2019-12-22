@@ -25,8 +25,8 @@ class TrendingFragment : Fragment() {
     private lateinit var binding: FragmentTrendingBinding
     private lateinit var errorParentLayout: ConstraintLayout
 
-    @Inject
-    lateinit var trendingRepoAdapter: TrendingRepoAdapter
+
+    private lateinit var trendingRepoAdapter: TrendingRepoAdapter
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -54,6 +54,10 @@ class TrendingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        trendingRepoAdapter = TrendingRepoAdapter {
+            viewModel.positionClicked(it)
+        }
+
         disableSwipeRefresh()
 
         with(binding.fragTrendRecy) {
@@ -74,7 +78,7 @@ class TrendingFragment : Fragment() {
 
         binding.fragTrendSwipe.setOnRefreshListener {
 
-            enableSwipeRefresh()
+            startSwipeToRefresh()
 
             viewModel.getTrendingUseCaseWithPullToRefresh()
         }
@@ -107,10 +111,10 @@ class TrendingFragment : Fragment() {
 
         viewModel.trendingList.observe(viewLifecycleOwner) {
             if (binding.fragTrendSwipe.isRefreshing)
-                disableSwipeRefresh()
+                stopSwipeToRefresh()
 
             showRecyclerView()
-            trendingRepoAdapter.submitList(it)
+            trendingRepoAdapter.submitList(it.toList())
 
             enableSwipeRefresh()
         }
@@ -123,18 +127,23 @@ class TrendingFragment : Fragment() {
             errorParentLayout.visibility = View.VISIBLE
     }
 
-    private fun enableSwipeRefresh()
-    {
-        binding.fragTrendSwipe.isRefreshing = true
+    private fun enableSwipeRefresh() {
+        binding.fragTrendSwipe.isEnabled = true
     }
 
-    private fun disableSwipeRefresh()
-    {
+    private fun disableSwipeRefresh() {
+        binding.fragTrendSwipe.isEnabled = false
+    }
+
+    private fun stopSwipeToRefresh() {
         binding.fragTrendSwipe.isRefreshing = false
     }
 
-    private fun showRecyclerView()
-    {
+    private fun startSwipeToRefresh() {
+        binding.fragTrendSwipe.isRefreshing = true
+    }
+
+    private fun showRecyclerView() {
         binding.fragTrendRecy.visibility = View.VISIBLE
     }
 

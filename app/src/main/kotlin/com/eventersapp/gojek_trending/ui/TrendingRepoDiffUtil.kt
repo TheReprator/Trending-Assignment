@@ -10,6 +10,6 @@ class TrendingRepoDiffUtil : DiffUtil.ItemCallback<TrendingModal>() {
     }
 
     override fun areContentsTheSame(oldItem: TrendingModal, newItem: TrendingModal): Boolean {
-        return oldItem == newItem
+        return oldItem == newItem && (oldItem.isCollapsed == newItem.isCollapsed)
     }
 }

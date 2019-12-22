@@ -12,11 +12,12 @@ import com.eventersapp.gojek_trending.databinding.RowTrendingBinding
 import com.eventersapp.gojek_trending.domain.TrendingModal
 import javax.inject.Inject
 
-class TrendingRepoAdapter @Inject constructor(): ListAdapter<TrendingModal, VHTrendingRepo>(TrendingRepoDiffUtil()) {
+class TrendingRepoAdapter @Inject constructor(private val itemClickListener: (Int) -> Unit) :
+    ListAdapter<TrendingModal, VHTrendingRepo>(TrendingRepoDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHTrendingRepo {
-        val binding = RowTrendingBinding.inflate(LayoutInflater.from(parent.context))
-        return VHTrendingRepo(binding)
+        val binding = RowTrendingBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return VHTrendingRepo(binding, itemClickListener)
     }
 
     override fun onBindViewHolder(holder: VHTrendingRepo, position: Int) {
@@ -43,12 +44,14 @@ class TrendingRepoAdapter @Inject constructor(): ListAdapter<TrendingModal, VHTr
     }
 }
 
-
 class VHTrendingRepo(
-    val binding: RowTrendingBinding
-) : RecyclerView.ViewHolder(binding.root)
-{
-
+    val binding: RowTrendingBinding, itemClickListener: (Int) -> Unit
+) : RecyclerView.ViewHolder(binding.root) {
+    init {
+        itemView.setOnClickListener {
+            if (adapterPosition > -1)
+                itemClickListener(adapterPosition)
+        }
+    }
 }
-
 
