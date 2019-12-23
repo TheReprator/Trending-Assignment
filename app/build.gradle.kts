@@ -18,7 +18,7 @@ android {
         versionCode = AppVersion.versionCode
         versionName = AppVersion.versionName
 
-        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
@@ -104,8 +104,8 @@ dependencies {
 
     testImplementation(Libs.TestDependencies.junit)
     testImplementation(Libs.TestDependencies.Mockk.unitTest)
-    testImplementation(Libs.TestDependencies.archCoreTesting)
-    testImplementation(Libs.TestDependencies.coroutinesTesting)
+    debugImplementation(Libs.TestDependencies.archCoreTesting)
+    debugImplementation(Libs.TestDependencies.coroutinesTesting)
 
     testImplementation(Libs.OkHttp.mockWebServer)
 
@@ -114,4 +114,6 @@ dependencies {
     androidTestImplementation(Libs.TestDependencies.instrumentedEspressoCore)
     androidTestImplementation(Libs.TestDependencies.instrumentedEspressoIntent)
     androidTestImplementation(Libs.TestDependencies.instrumentedEspressoContrib)
+    debugImplementation(Libs.TestDependencies.instrumentedFragment)
+    implementation(Libs.TestDependencies.idlingResource)
 }

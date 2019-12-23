@@ -183,6 +183,8 @@ object Libs {
         const val instrumentedEspressoCore = "androidx.test.espresso:espresso-core:3.1.1"
         const val instrumentedEspressoIntent = "androidx.test.espresso:espresso-intents:3.1.1"
         const val instrumentedEspressoContrib= "androidx.test.espresso:espresso-contrib:3.1.1"
+        const val instrumentedFragment= "androidx.fragment:fragment-testing:1.2.0-rc04"
+        const val idlingResource= "androidx.test.espresso:espresso-idling-resource:3.1.0"
     }
 
     //https://github.com/satoshun-android-example/ViewModelSavedState/blob/master/app/build.gradle
