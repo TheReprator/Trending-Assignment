@@ -37,7 +37,7 @@ object Libs {
     }
 
     const val realm = "io.realm:realm-gradle-plugin:6.0.1"
-    const val androidGradlePlugin = "com.android.tools.build:gradle:4.0.0-alpha06"
+    const val androidGradlePlugin = "com.android.tools.build:gradle:3.6.1"
 
     const val timber = "com.jakewharton.timber:timber:4.7.1"
     const val facebook = "com.facebook.android:facebook-login:[5,6)"
@@ -95,14 +95,14 @@ object Libs {
         const val swiperefresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha03"
 
         object Navigation {
-            private const val version = "2.2.0-rc02"
+            private const val version = "2.2.0"
             const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
             const val ui = "androidx.navigation:navigation-ui-ktx:$version"
             const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
         }
 
         object Fragment {
-            private const val version = "1.2.0-rc01"
+            private const val version = "1.2.2"
             const val fragment = "androidx.fragment:fragment:$version"
             const val fragmentKtx = "androidx.fragment:fragment-ktx:$version"
         }
@@ -159,7 +159,7 @@ object Libs {
     }
 
     object Dagger {
-        private const val version = "2.25.2"
+        private const val version = "2.26"
         const val runtime = "com.google.dagger:dagger:$version"
         const val android = "com.google.dagger:dagger-android:$version"
         const val android_support = "com.google.dagger:dagger-android-support:$version"
@@ -183,8 +183,11 @@ object Libs {
         const val instrumentedEspressoCore = "androidx.test.espresso:espresso-core:3.1.1"
         const val instrumentedEspressoIntent = "androidx.test.espresso:espresso-intents:3.1.1"
         const val instrumentedEspressoContrib= "androidx.test.espresso:espresso-contrib:3.1.1"
-        const val instrumentedFragment= "androidx.fragment:fragment-testing:1.2.0-rc04"
+        const val instrumentedFragment= "androidx.fragment:fragment-testing:1.2.2"
         const val idlingResource= "androidx.test.espresso:espresso-idling-resource:3.1.0"
+
+        const val runner = "androidx.test:runner:1.1.1"
+        const val rule = "androidx.test:rules:1.1.1"
     }
 
     //https://github.com/satoshun-android-example/ViewModelSavedState/blob/master/app/build.gradle

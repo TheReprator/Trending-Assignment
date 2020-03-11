@@ -17,9 +17,10 @@ import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
 import retrofit2.Retrofit
+import retrofit2.create
 
 @Module
-abstract class ConnectModule {
+abstract class TrendingModule {
 
     @Binds
     @IntoMap
@@ -31,16 +32,14 @@ abstract class ConnectModule {
 
         @Provides
         @FragmentScope
-        @JvmStatic
         fun provideTrendingApiService(
             retrofit: Retrofit
         ): TrendingApiService {
-            return retrofit.create(TrendingApiService::class.java)
+            return retrofit.create()
         }
 
         @Provides
         @FragmentScope
-        @JvmStatic
         fun provideTrendingUseCase(
             trendingDomainRepository: TrendingDomainRepository
         ): TrendingUseCase {
@@ -49,7 +48,6 @@ abstract class ConnectModule {
 
         @Provides
         @FragmentScope
-        @JvmStatic
         fun provideTrendingDomainRepository(
             trendingRemoteDataSource: TrendingRemoteDataSource
         ): TrendingDomainRepository {
@@ -58,7 +56,6 @@ abstract class ConnectModule {
 
         @Provides
         @FragmentScope
-        @JvmStatic
         fun provideTrendingRemoteDataSource(
             trendingApiService: TrendingApiService, trendingMapper: TrendingMapper
         ): TrendingRemoteDataSource {

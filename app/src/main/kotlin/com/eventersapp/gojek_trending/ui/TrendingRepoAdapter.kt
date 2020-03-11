@@ -10,6 +10,7 @@ import coil.transform.CircleCropTransformation
 import com.eventersapp.gojek_trending.R
 import com.eventersapp.gojek_trending.databinding.RowTrendingBinding
 import com.eventersapp.gojek_trending.domain.TrendingModal
+import com.eventersapp.gojek_trending.util.EspressoIdlingResource
 import javax.inject.Inject
 
 class TrendingRepoAdapter @Inject constructor(private val itemClickListener: (Int) -> Unit) :

@@ -10,6 +10,7 @@ import com.eventersapp.gojek_trending.domain.baseUseCase.Success
 import com.eventersapp.gojek_trending.domain.trendingUseCase.TrendingUseCase
 import com.eventersapp.gojek_trending.util.CoroutineDispatcherProvider
 import com.eventersapp.gojek_trending.util.event.Event
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -44,10 +45,9 @@ class TrendingRepoViewModal @Inject constructor(
     }
 
     fun getTrendingUseCaseWithPullToRefresh() {
-        viewModelScope.launch(coroutineDispatcherProvider.io) {
+        viewModelScope.launch(Dispatchers.IO) {
             val result = trendingUseCase.run(Unit)
-            withContext(coroutineDispatcherProvider.main)
-            {
+            withContext(Dispatchers.Main) {
                 _isLoading.value = Event(false)
 
                 when (result) {
@@ -75,7 +75,8 @@ class TrendingRepoViewModal @Inject constructor(
                 this.selectedRecyclerPosition = selectedPosition
 
                 val originalList = _trendingList.value!!.toMutableList()
-                originalList[selectedPosition] = originalList[selectedPosition].copy(isCollapsed = false)
+                originalList[selectedPosition] =
+                    originalList[selectedPosition].copy(isCollapsed = false)
 
                 _trendingList.value = originalList
             }
@@ -96,7 +97,7 @@ class TrendingRepoViewModal @Inject constructor(
                 val previous = this.selectedRecyclerPosition
                 this.selectedRecyclerPosition = selectedPosition
 
-                if(previous != -1) {
+                if (previous != -1) {
                     val previousItem = originalList[previous].copy(isCollapsed = true)
                     listData[previous] = previousItem
                 }
