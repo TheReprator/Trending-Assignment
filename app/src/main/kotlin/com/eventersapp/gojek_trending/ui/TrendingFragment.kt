@@ -6,38 +6,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.eventersapp.gojek_trending.R
 import com.eventersapp.gojek_trending.dagger.ViewModelFactory
 import com.eventersapp.gojek_trending.dagger.coreComponent
 import com.eventersapp.gojek_trending.databinding.FragmentTrendingBinding
-import com.eventersapp.gojek_trending.ui.di.DaggerTrendingComponent
+import com.eventersapp.gojek_trending.util.EspressoIdlingResource
 import com.eventersapp.gojek_trending.util.event.EventObserver
+import com.eventersapp.gojek_trending.util.viewBinding
 import javax.inject.Inject
 
 class TrendingFragment : Fragment() {
 
-    private lateinit var binding: FragmentTrendingBinding
-    private lateinit var errorParentLayout: ConstraintLayout
+    private val binding by viewBinding(FragmentTrendingBinding::bind)
 
+    private lateinit var errorParentLayout: ConstraintLayout
 
     private lateinit var trendingRepoAdapter: TrendingRepoAdapter
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private val viewModel: TrendingRepoViewModal by lazy {
-        ViewModelProvider(viewModelStore, viewModelFactory).get(TrendingRepoViewModal::class.java)
-    }
-
+    private val viewModel: TrendingRepoViewModal by viewModels { viewModelFactory }
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        DaggerTrendingComponent.factory().create(context.coreComponent()).inject(this)
+        context.coreComponent().trendingComponent().create().inject(this)
     }
 
     override fun onCreateView(
@@ -46,13 +43,12 @@ class TrendingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        return FragmentTrendingBinding.inflate(layoutInflater).also {
-            binding = it
-        }.root
+        return FragmentTrendingBinding.inflate(layoutInflater).root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        EspressoIdlingResource.increment()
 
         trendingRepoAdapter = TrendingRepoAdapter {
             viewModel.positionClicked(it)
@@ -94,7 +90,6 @@ class TrendingFragment : Fragment() {
     }
 
     private fun initializeObserver() {
-
         viewModel.isError.observe(viewLifecycleOwner, EventObserver {
             if (it)
                 showError()
@@ -114,7 +109,10 @@ class TrendingFragment : Fragment() {
                 stopSwipeToRefresh()
 
             showRecyclerView()
-            trendingRepoAdapter.submitList(it.toList())
+            trendingRepoAdapter.submitList(it.toList()) {
+                EspressoIdlingResource.decrement()
+            }
+            EspressoIdlingResource.decrement()
 
             enableSwipeRefresh()
         }
