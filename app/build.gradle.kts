@@ -37,7 +37,7 @@ android {
 
     flavorDimensions("type")
 
-    buildFeatures.viewBinding = true
+    viewBinding.isEnabled = true
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
